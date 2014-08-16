@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- CSS -->
+<style type="text/css">
+h1 {
+	color: #666666;
+	text-align: center;
+}
+
+table {
+	width: 600px;
+	border: 1px #CECECE solid;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table th {
+	padding: 5px;
+	border: #CECECE solid;
+	border-width: 0 0 1px 1px;
+	background: #F0F0F0;
+	font-weight: bold;
+	line-height: 120%;
+	text-align: center;
+}
+
+table td {
+	padding: 5px;
+	border: 1px #CECECE solid;
+	
+	text-align: center;
+}
+
+table td.row {
+	height: 40px;
+}
+table td.high{
+	height:80px;	
+}
+table td label{
+	width:160px;
+}
+table td input[type=checkbox][disabled]{
+  border:1px solid red;
+}
+table td.half{
+	width:300px;
+}
+table td.check img{
+	width:16px;
+}
+table td.radio img{
+	width:16px;
+}
+table td#photo img{
+	width:296px;
+}
+</style>
+<!-- jquery 読み込み -->
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
+	type="text/javascript"></script>
+<script type="text/javascript">
+	//日報データ取得
+	$(document).ready(function() {
+		var param = getUrlVars();
+		$.getJSON('/admin/js/report.jsp', {
+			"work_id" : param.work_id
+		}, function(work) {
+
+			//ドキュメントに書き出し
+			$('#staff_name').empty().text(work[0].staff_name);//スタッフ名
+			$('#user_name').empty().text(work[0].user_name);//被介護者名
+			$('#aim').empty().text(work[0].aim);//手段
+			$('#note').empty().append(work[0].note.replace(/(\n|\r)/g, "<br />"));//備考欄//改行部分は変換
+			
+			$('#start_time').empty().text(work[0].start_time);//開始時間
+			
+			//チェックボックス部分
+			if(work[0].bath == "true"){
+				$('#bath').attr({
+						'src':'img/report/check_on.png'
+					});
+			}
+			if(work[0].clean == "true"){
+				$('#clean').attr({
+						'src':'img/report/check_on.png'
+					});
+			}
+			if(work[0].wash == "true"){
+				$('#wash').attr({
+						'src':'img/report/check_on.png'
+					});
+			}
+			
+			if(work[0].cook == "true"){
+				$('#cook').attr({
+						'src':'img/report/check_on.png'
+					});
+			}
+			if(work[0].shopping == "true"){
+				$('#shopping').attr({
+						'src':'img/report/check_on.png'
+					});
+			}
+			if(work[0].wear == "true"){
+				$('#wear').attr({
+						'src':'img/report/check_on.png'
+					});
+			}
+			//ラジオボタン部分
+			var walk = status2class(work[0].walk);
+			$('#walk').children('.' + walk).attr({
+				'src':'img/report/radio_on.png'
+			});
+			var move = status2class(work[0].move);
+			$('#move').children('.' + move).attr({
+				'src':'img/report/radio_on.png'
+			});
+			var talk = status2class(work[0].talk);
+			$('#talk').children('.' + talk).attr({
+				'src':'img/report/radio_on.png'
+			});
+			var eat = status2class(work[0].eat);
+			$('#eat').children('.' + eat).attr({
+				'src':'img/report/radio_on.png'
+			});
+			var sleep = status2class(work[0].sleep);
+			$('#sleep').children('.' + sleep).attr({
+				'src':'img/report/radio_on.png'
+			});
+			
+			//写真
+			if(work[0].url != null){
+				$('#photo').empty().append($('<img />').attr({
+					src : work[0].url,
+					title : "日報写真",
+					alt : "日報写真"
+				}));
+			}else{
+				$('#photo').empty().text("画像無し");//画像
+			}
+			
+
+		});
+	});
+	
+	//ステータスを名前に変更
+	function status2class(status){
+		if(status == -1){//指定なし
+			return "none";
+		}else if(status == 0){//良
+			return "good";
+		}else if(status == 1){//通常
+			return "usually";
+		}else if(status == 2){//不良
+			return "bad";
+		}else{
+			return "none";
+		}
+	}
+
+	//送られてきたGETパラメータを取得
+	function getUrlVars() {
+		var vars = [], hash;
+		var hashes = window.location.href.slice(
+				window.location.href.indexOf('?') + 1).split('&');
+		for ( var i = 0; i < hashes.length; i++) {
+			hash = hashes[i].split('=');
+			vars.push(hash[0]);
+			vars[hash[0]] = hash[1];
+		}
+		return vars;
+	}
+</script>
+<title>日報確認</title>
+</head>
+<body>
+	<h1>【日報】</h1>
+	<!--　氏名部分　はじめ　 -->
+	<table border="1" width="595px" align=center>
+		<tbody>
+			<tr bgcolor="#add8e6">
+				<th>利用者氏名</th>
+				<th>要介護状態区分</th>
+				<th>担当ヘルパー</th>
+			</tr>
+			<tr align=center>
+				<td rowspan=2 id="user_name" class="high">読み込み中・・・・</td>
+				<td rowspan=2 id="aim" class="high">読み込み中・・・・</td>
+				<td rowspan=2 id="staff_name" class="high">読み込み中・・・・</td>
+			</tr>
+			<tr align=center>
+			</tr>
+			<tr bgcolor="#add8e6">
+				<th rowspan=2>訪問日時</th>
+				</th>
+			</tr>
+			<tr align=center>
+				<td colspan=2 id="start_time" class="high">読み込み中・・・・</td>
+			</tr>
+			<tr align=center></tr>
+			<tr align=center></tr>
+		</tbody>
+	</table>
+
+	<!--　氏名部分　おわり　 -->
+	<br>
+	<!--　サービス部分　はじめ　 -->
+	<table align=center>
+		<tbody>
+			<tr bgcolor="#ADD8E6">
+				<th colspan=4>提供サービス <br>
+				</th>
+			</tr>
+			<tr align=left>
+				<td class="check">
+					<img src="img/report/check_none.png" id="bath" />入浴
+				</td>
+				<td class="check">
+					<img src="img/report/check_none.png" id="clean" />掃除
+				</td>
+			</tr>
+			<tr align=left>
+				<td class="check">
+					<img src="img/report/check_none.png" id="wash" />洗濯
+				</td>
+				<td class="check">
+					<img src="img/report/check_none.png" id="shopping" />買い物
+				</td>
+			</tr>
+			<tr align=left>
+				<td class="check">
+					<img src="img/report/check_none.png" id="cook" />一般調理
+				</td>
+				<td class="check">
+					<img src="img/report/check_none.png" id="wear" />衣服整理
+				</td>
+			</tr>
+		<tbody>
+	</table>
+	<!--　サービス部分　おわり　 -->
+	<br>
+	<!--　チェック部分　はじめ　 -->
+	<table align=center>
+		<tbody>
+			<tr bgcolor="#add8e6">
+				<th colspan=2>状態チェック</th>
+			</tr>
+
+
+			<tr align=center>
+				<th>歩行 </th>
+				<td class="low radio" id="walk">
+					<img src="img/report/radio_none.png" class="none" />指定なし
+					<img src="img/report/radio_none.png" class="good" />良
+					<img src="img/report/radio_none.png" class="usually" />通常
+					<img src="img/report/radio_none.png" class="bad" />不良
+				</td>
+			</tr>
+			<tr align=center>
+				<th>移動</th>
+				<td class="low radio" id="move">
+					<img src="img/report/radio_none.png" class="none" />指定なし
+					<img src="img/report/radio_none.png" class="good" />良
+					<img src="img/report/radio_none.png" class="usually" />通常
+					<img src="img/report/radio_none.png" class="bad" />不良
+				</td>
+
+			</tr>
+			<tr align=center>
+				<th>会話 </th>
+				<td class="low radio" id="talk">
+					<img src="img/report/radio_none.png" class="none" />指定なし
+					<img src="img/report/radio_none.png" class="good" />良
+					<img src="img/report/radio_none.png" class="usually" />通常
+					<img src="img/report/radio_none.png" class="bad" />不良
+				</td>
+			</tr>
+			<tr align=center>
+				<th>食事 </th>
+				<td class="low radio" id="eat">
+					<img src="img/report/radio_none.png" class="none" />指定なし
+					<img src="img/report/radio_none.png" class="good" />良
+					<img src="img/report/radio_none.png" class="usually" />通常
+					<img src="img/report/radio_none.png" class="bad" />不良
+				</td>
+
+			</tr>
+			<tr align=center>
+				<th>睡眠</th>
+				<td class="low radio" id="sleep">
+					<img src="img/report/radio_none.png" class="none" />指定なし
+					<img src="img/report/radio_none.png" class="good" />良
+					<img src="img/report/radio_none.png" class="usually" />通常
+					<img src="img/report/radio_none.png" class="bad" />不良
+				</td>
+
+			</tr>
+		<tbody>
+	</table>
+	<!--　チェック部分　終わり　 -->
+
+	<br>
+
+	<table align=center>
+		<tbody id="tbody4">
+			<tr>
+				<th>備考 <br>
+				</th>
+				<th>画像 <br>
+				</th>
+			</tr>
+			<tr align=left>
+				<td class="half" id="note">読み込み中・・・・</td>
+				<td class="half" id="photo">読み込み中・・・・</td>
+			</tr>
+		<tbody>
+	</table>
+</body>
+</html>

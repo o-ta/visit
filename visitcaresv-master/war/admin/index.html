@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- ■CSS ライブラリ　 -->
+<!-- jQuery-ui テーマ redmond -->
+<link
+	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/redmond/jquery-ui.css"
+	rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="js/jquery.fancybox.css"
+	media="screen" />
+<!-- ■CSS 自前 -->
+<link rel="stylesheet" type="text/css" href="css/schedule.css"
+	media="screen" />
+
+
+<!-- ■JavaScript ライブラリ -->
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
+	type="text/javascript"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/jquery-ui.min.js"
+	type="text/javascript"></script>
+<!-- 日本語カレンダー表示に必要 -->
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+<!-- ライトボックス -->
+<script src="js/jquery.fancybox.pack.js" type="text/javascript"></script>
+<!-- Date.js Dateを使いやすくしてくれるライブラリ -->
+<script type="text/javascript" src="js/date-ja-JP.js"></script>
+<script type="text/javascript" src="js/ja-JP.js"></script>
+
+<!-- ■JavaScript 自前 -->
+<!-- scheduleのテーブル描画 -->
+<script src="js/schedule.js" type="text/javascript"></script>
+
+
+<!--スクリプト直書き　はじめ　-->
+
+<script type="text/javascript">
+	var loading = false;
+	$(function() {
+
+		/**<!--タブ枠設定　はじめ　-->*/
+		$("#tabs").tabs({
+			fx : {
+				opacity : 'toggle',
+				duration : 'normal'
+			},
+			selected : 0,
+			select : function(event, ui) {
+
+				//コンテンツ再描画//別のオブジェクトからすでにデータを読み込み中ならば再描画しない
+				if(!loading){
+					draw_table($(ui.tab).attr("id"));
+				}
+				loading = false;
+				
+			}
+		});
+		draw_tab(Date.today());
+
+		/**<!--ボタン＆カレンダー　設定　はじめ-->*/
+		$("#button").button();
+		$.datepicker.setDefaults($.extend($.datepicker.regional['ja']));
+		$('#datepicker').datepicker({
+			showOn : 'button',
+			buttonImage : 'img/schedule/cal.png',
+			buttonText : 'クリックすると日付が反映されます',
+			buttonImageOnly : true,
+			changeMonth : true,
+			changeYear : true,
+			firstDay : 1,
+			yearRange : '2000:2030',
+			showMonthAfterYear : false,
+			onSelect : function(dateText, inst) {
+				
+				//タブを描画
+				draw_tab(Date.parse(dateText));
+				
+			}
+		});
+		/**<!--タブ枠設定　おわり　-->*/
+
+	});
+	
+	//カレンダーから呼ばれる
+	//タブを再描画
+	function draw_tab(_date) {
+
+		//指定された日付のスケジュールを再描画
+		draw_table(_date.toString('yyyy-MM-dd'));
+		loading = true;
+
+		//タブ部分を再描画
+		var d1 = _date.add(-4).days();
+		$("#tabs ul li").each(function() {
+			var d2 = d1.add(1).days();
+			$(this).children("a").text(d2.toString('MM/dd(ddd)')).attr({
+				'id' : d2.toString('yyyy-MM-dd')
+			});
+
+		});
+		
+		//タブの選択を規定値に戻す
+		$("#tabs").tabs("select", 3);
+		//ローディングフラグをファルスに
+		loading = false;
+		
+	}
+</script>
+<!--ボタン＆カレンダー　設定　おわり　-->
+<!--fancybox　はじめ-->
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$('a.fb').fancybox({
+			'type' : 'iframe',
+			'showCloseButton' : true,
+			'hideOnContentClick' : true,
+			'showNavArrows' : true,
+			'overlayShow' : true,
+			'overlayOpacity' : 0.5,
+			'scrolling' : 'yes',
+			'titleShow' : true
+
+		});
+
+	});
+</script>
+<!--fancybox　おわり-->
+<!--スクリプト直書き　終わり　-->
+
+
+
+<title>実績＆訪問予定</title>
+</head>
+<body>
+	<div id="loading">
+		<img src="img/schedule/nowloading.gif" />
+	</div>
+	<div id="container">
+		<div id="header">
+			<h1>訪問介護システム 【実績＆訪問予定】</h1>
+			<div id="main">
+				<!--　ＭＡＰ＆カレンダー　はじめ-->
+				<div>
+					<div id="button">
+						<a href="map.html"> ＭＡＰ画面へ移動</a>
+					</div>
+					<div id=inp_cal>
+						<input id="datepicker" style="visibility: hidden;">
+					</div>
+				</div>
+				<!--ＭＡＰ＆カレンダー　おわり-->
+				<div class="demo">
+					<div id="tabs">
+						<ul>
+							<li><a href="#sc_content" class="ob1">tmp1</a></li>
+							<li><a href="#sc_content" class="ob2">tmp2</a></li>
+							<li><a href="#sc_content" class="ob3">tmp3</a></li>
+							<li><a href="#sc_content" class="ob4">tmp4</a></li>
+							<li><a href="#sc_content" class="ob5">tmp5</a></li>
+							<li><a href="#sc_content" class="ob6">tmp6</a></li>
+							<li><a href="#sc_content" class="ob7">tmp7</a></li>
+						</ul>
+						<div class="panel">
+							<div id="sc_content">
+								<table>
+									<thead>
+										<tr>
+											<th>id</th>
+											<th>スタッフ名</th>
+											<th>被介護者名</th>
+											<th>開始予定</th>
+											<th>開始時間</th>
+											<th>終了時間</th>
+											<th>区分</th>
+											<th>歩行</th>
+											<th>会話</th>
+											<th>移動</th>
+											<th>睡眠</th>
+											<th>食事</th>
+											<th>写真</th>
+											<th>日報</th>
+										</tr>
+									</thead>
+									<tbody class="sc_tb" id="sc_tbody">
+										<tr>
+											<td colspan="14">読み込み中</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div>
+			<address>&copy;2013 o-ta.All Rights Reserved.</address>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

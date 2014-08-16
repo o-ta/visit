@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	
+	
+	<!-- AdminReportAPI -->
+	<servlet>
+		<servlet-name>AdminScheduleAPI</servlet-name>
+		<servlet-class>com.tumiki0ituki.visitcaresv.AdminScheduleAPI</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminScheduleAPI</servlet-name>
+		<url-pattern>/admin/js/schedule.jsp</url-pattern>
+	</servlet-mapping>
+	<!-- AdminReportAPI -->
+	<servlet>
+		<servlet-name>AdminReportAPI</servlet-name>
+		<servlet-class>com.tumiki0ituki.visitcaresv.AdminReportAPI</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminReportAPI</servlet-name>
+		<url-pattern>/admin/js/report.jsp</url-pattern>
+	</servlet-mapping>
+	<!-- RequestUser -->
+	<servlet>
+		<servlet-name>RequestUser</servlet-name>
+		<servlet-class>com.tumiki0ituki.visitcaresv.RequestUser</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RequestUser</servlet-name>
+		<url-pattern>/api/v1/request/user.jsp</url-pattern>
+	</servlet-mapping>
+	<!-- RequestStaff -->
+	<servlet>
+		<servlet-name>RequestStaff</servlet-name>
+		<servlet-class>com.tumiki0ituki.visitcaresv.RequestStaff</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RequestStaff</servlet-name>
+		<url-pattern>/api/v1/request/staff.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<!-- RequestSchedule -->
+	<servlet>
+		<servlet-name>RequestSchedule</servlet-name>
+		<servlet-class>com.tumiki0ituki.visitcaresv.RequestSchedule</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RequestSchedule</servlet-name>
+		<url-pattern>/api/v1/request/schedule.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<!-- RequestUpload -->
+	<servlet>
+		<servlet-name>RequestUpload</servlet-name>
+		<servlet-class>com.tumiki0ituki.visitcaresv.RequestUpload</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RequestUpload</servlet-name>
+		<url-pattern>/api/v1/request/upload.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<!-- RegistSchedule -->
+	<servlet>
+		<servlet-name>RegistSchedule</servlet-name>
+		<servlet-class>com.tumiki0ituki.visitcaresv.RegistSchedule</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegistSchedule</servlet-name>
+		<url-pattern>/api/v1/regist/schedule.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<!-- RegistLocation -->
+	<servlet>
+		<servlet-name>RegistLocation</servlet-name>
+		<servlet-class>com.tumiki0ituki.visitcaresv.RegistLocation</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegistLocation</servlet-name>
+		<url-pattern>/api/v1/regist/location.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<!-- RegistFile -->
+	<servlet>
+		<servlet-name>RegistFile</servlet-name>
+		<servlet-class>com.tumiki0ituki.visitcaresv.RegistFile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegistFile</servlet-name>
+		<url-pattern>/api/v1/regist/file.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<!-- InsertData -->
+	<servlet>
+		<servlet-name>InsertData</servlet-name>
+		<servlet-class>com.tumiki0ituki.visitcaresv.InsertData</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InsertData</servlet-name>
+		<url-pattern>/api/v1/insert_data.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>
