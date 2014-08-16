@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="GPS設定" >
+        <CheckBoxPreference
+            android:key="auto_send"
+            android:summary="チェックボックスのサマリー"
+            android:title="現在位置送信機能" />
+
+        <com.oita.visitcareapp.SendLocationDialog
+            android:dialogTitle="送信間隔を入力"
+            android:key="relordtime"
+            android:summary="現在の送信間隔は３０分です"
+            android:title="送信間隔設定" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

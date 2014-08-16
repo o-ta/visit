@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">訪問介護システム</string>
+    <string name="userurl">http://GAEサーバー/api/v1/request/user.jsp</string>
+    <string name="scheduleurl">http://GAEサーバー/api/v1/regist/schedule.jsp</string>
+    <string name="reqscheduleurl">http://GAEサーバー/api/v1/request/schedule.jsp</string>
+    <string name="submit">送信</string>
+    <string name="cancel">キャンセル</string>
+    <string name="date_time_format">%1$tF %1$tR</string>
+    <string name="dialog_title">新規スケジュール</string>
+    <string name="user_title">訪問先</string>
+    <string name="daytime_title">訪問日時</string>
+    <string name="map_key">マップキー</string>
+	<string name="sl_checkon_summary">位置送信をOFFにします</string>
+	<string name="sl_checkoff_summary">位置送信をONにします</string>
+	<string name="sl_dialog_title">エラー</string>
+	<string name="sl_dialog_message">更新間隔を入力してください</string>
+	<string name="sl_dialog_button">確認</string>
+	<string name="sl_Reloadtime_key">更新間隔</string>
+	<string name="sl_URI">http://GAEサーバー/api/v1/regist/location.jsp
+	</string>
+	<string name="sl_GPS_error">端末のＧＰＳ機能を有効にしてください</string>
+	<string name="sl_Notification_ticker_text">現在地送信を開始します</string>
+	<string name="sl_Notification_text">位置情報をサーバーに送信しています</string>
+	<string name="sl_minute">分</string>
+	<string name="sl_hint">1~99を入力</string>    <string name="schedule_get_url">http://GAEサーバー/api/v1/request/schedule.jsp?</string>
+    <string name="staff_get_url">http://GAEサーバー/api/v1/request/staff.jsp?</string>
+    <string name="image_send_url">http://GAEサーバー/api/v1/request/upload.jsp</string>
+
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+	<item>
+		<shape android:shape="rectangle">
+			<gradient
+				android:startColor="#fafafa"
+				android:endColor="#f9f6ee"
+				android:angle="270"
+			></gradient>
+		</shape>
+	</item>
+	<item>
+		<bitmap
+			android:src="@drawable/friendlist_bg"
+			android:antialias="true"
+			android:dither="false"
+			android:filter="false"
+			android:gravity="bottom|fill_horizontal"
+			android:tileMode="disabled"
+		></bitmap>
+	</item>
+
+</layer-list>

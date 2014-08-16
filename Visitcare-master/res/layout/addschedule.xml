@@ -1,0 +1,47 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/user_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_title" android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/daytime_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userListSpinner"
+            android:layout_marginTop="5dp"
+            android:text="@string/daytime_title" android:layout_marginLeft="5dp"/>
+
+        <Spinner
+            android:id="@+id/userListSpinner"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_title"
+            android:layout_marginTop="5dp" />
+
+        <DatePicker
+            android:id="@+id/datePiker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/daytime_title"
+            android:layout_marginTop="5dp" android:layout_centerHorizontal="true"/>
+
+        <TimePicker
+            android:id="@+id/timePiker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/datePiker"
+            android:layout_marginTop="5dp"
+            android:hapticFeedbackEnabled="true" android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+
+</ScrollView>

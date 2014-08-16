@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/report_background1">
+       <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" 
+            android:orientation="vertical">
+            
+            <RelativeLayout
+                android:id="@+id/title_text_Relative3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                android:background="@drawable/report_background1">
+
+
+                <TextView
+                    android:id="@+id/third_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:textSize="23sp"
+                    android:textColor="#000000"
+                    android:text="@string/third_text" 
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/walk_button"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:textSize="18sp"
+                    android:text="@string/walk" />
+
+                <TextView
+                    android:id="@+id/walk_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:hint="@string/hint2"
+                    android:textColor="#000000"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/move_button"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:textSize="18sp"
+                    android:text="@string/move" />
+
+                <TextView
+                    android:id="@+id/move_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/move_button"
+                    android:layout_alignBottom="@+id/move_button"
+                    android:layout_centerHorizontal="true"
+                    android:hint="@string/hint2"
+                    android:textColor="#000000"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/talk_button"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:textSize="18sp"
+                    android:text="@string/talk" />
+
+                <TextView
+                    android:id="@+id/talk_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="#000000"
+                    android:hint="@string/hint2" 
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:id="@+id/relativeLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/eat_button"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:textSize="18sp"
+                    android:text="@string/eat" 
+                    />
+
+                <TextView
+                    android:id="@+id/eat_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="#000000"
+                    android:hint="@string/hint2" 
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:id="@+id/relativeLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/sleep_button"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:textSize="18sp"
+                    android:text="@string/sleep" 
+                    />
+
+                <TextView
+                    android:id="@+id/sleep_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="#000000"
+                    android:hint="@string/hint2" 
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            </RelativeLayout>
+            
+            
+                <EditText
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:inputType="textMultiLine"  
+        android:hint="@string/note"/>
+               
+    </LinearLayout>
+    </ScrollView>
+    
+       <LinearLayout
+        android:id="@+id/button_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/go_sendingActivity_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:text="@string/next" />
+
+        <Button
+            android:id="@+id/go_reportActivity_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:text="@string/back" />
+
+    </LinearLayout>
+
+</LinearLayout>

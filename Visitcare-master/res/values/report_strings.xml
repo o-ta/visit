@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    
+    <string name="hint">入力必須</string>
+    <string name="hint2">未入力</string>
+    
+    <string name="next">次へ</string>
+    <string name="tyudan">中断</string>
+    <string name="send">送信</string>
+    <string name="back">戻る</string>
+    <string name="date">日付</string>
+    <string name="start">開始</string>
+    <string name="end">終了</string>
+    <string name="start_time">開始時間</string>
+    <string name="end_time">終了時間</string>
+    <string name="aim">区分</string>
+    <string name="bath">入浴</string>
+    <string name="clean">掃除</string>
+    <string name="wash">洗濯</string>
+    <string name="shopping">買い物</string>
+    <string name="cook">一般調理</string>
+    <string name="wear">衣服整理</string>
+    <string name="walk">歩行</string>
+    <string name="move">移動</string>
+    <string name="talk">会話</string>
+    <string name="eat">食事</string>
+    <string name="sleep">睡眠</string>
+    <string name="note">備考</string>
+    
+    
+    
+    <string name="first_text">日時・介護区分</string>
+    <string name="second_text">提供サービス</string>
+    <string name="third_text">状態チェック</string>
+    <string name="fourth_text">入力内容確認</string>
+
+</resources>

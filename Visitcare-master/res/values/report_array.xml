@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="aim">
+        <item>要介護1</item>
+        <item>要介護2</item>
+        <item>要介護3</item>
+        <item>要介護4</item>
+        <item>要介護5</item>
+        
+        <item>その他</item>
+        
+    </string-array>
+
+    
+    <string-array name="check">
+        <item>良</item>
+        <item>通常</item>
+        <item>不良</item>
+                
+    </string-array>
+   
+    
+</resources>
