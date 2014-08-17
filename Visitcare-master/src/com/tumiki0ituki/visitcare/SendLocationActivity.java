@@ -25,13 +25,13 @@ import android.util.Log;
 public class SendLocationActivity extends PreferenceActivity implements
 		OnSharedPreferenceChangeListener {
 
-	/** ｷｰ：更新時間 */
+	/** キー：更新時間 */
 	public static final String KEY_RELORDTIME = "relordtime";
 
-	/** ｷｰ：自動送信 */
+	/** キー：自動送信 */
 	public static final String KEY_AUTO_SEND = "auto_send";
 
-	/** ﾃﾞﾌｫﾙﾄ値：更新時間 */
+	/** デフォルト値：更新時間 */
 	public static final String DEFAULT_TIME = "30";
 
 	/** タグ：クラス名 */
@@ -44,7 +44,7 @@ public class SendLocationActivity extends PreferenceActivity implements
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 
 		// PreferenceActivityに自前の設定xmlを設定
 		addPreferencesFromResource(R.xml.sendloc_setting);
@@ -61,7 +61,7 @@ public class SendLocationActivity extends PreferenceActivity implements
 
 	/**
 	 * チェックボックスの状態の初期設定をします
-	 * 
+	 *
 	 * @param boolean型
 	 *            : サービスが起動しているかどうか
 	 */
@@ -83,7 +83,7 @@ public class SendLocationActivity extends PreferenceActivity implements
 
 	/**
 	 * サマリーを初期化します
-	 * 
+	 *
 	 * @param key
 	 *            プリファレンスに登録するためのキーで判別
 	 */
@@ -119,9 +119,9 @@ public class SendLocationActivity extends PreferenceActivity implements
 
 	/**
 	 * 現在起動中のサービスがあるかどうかを調べます
-	 * 
+	 *
 	 * @param なし
-	 * 
+	 *
 	 * @return 起動しているサービスがある：true 　　起動しているサービスがない：false
 	 */
 	private boolean isServiceRunning() {
@@ -144,7 +144,7 @@ public class SendLocationActivity extends PreferenceActivity implements
 	}
 
 	/**
-	 * プリファレンスに新しい値が設定された時に呼び出されます
+	 * プリファレンスに新しい値が設定された時に呼び出されます.
 	 */
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
@@ -167,7 +167,7 @@ public class SendLocationActivity extends PreferenceActivity implements
 			// チェックボックスのサマリーの再設定
 			initSummary(KEY_AUTO_SEND);
 
-			// OFF --> OＮになった時の処置
+			// OFF -> OＮになった時の処置
 			if (checkbox_preference.isChecked()) {
 				// サービスをスタートさせる
 				Intent intent = new Intent(SendLocationActivity.this,
@@ -179,7 +179,7 @@ public class SendLocationActivity extends PreferenceActivity implements
 						+ getReloadtime(SendLocationActivity.this));
 				startService(intent);
 
-				// ON --> OFFになった時の処理
+				// ON -> OFFになった時の処理
 			} else if (!(checkbox_preference.isChecked())) {
 				// サービスを停止させる
 				Intent intent = new Intent(SendLocationActivity.this,
@@ -194,9 +194,9 @@ public class SendLocationActivity extends PreferenceActivity implements
 
 	/**
 	 * 更新時間を取得します｡
-	 * 
+	 *
 	 * @param context
-	 *            ｱﾌﾟﾘｹｰｼｮﾝ情報
+	 *            アプリケーション情報
 	 * @return 設定されている送信間隔（未設定の場合は{@link #DEFAULT_TIME}）
 	 */
 	public static int getReloadtime(Context context) {

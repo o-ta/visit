@@ -1,9 +1,9 @@
 /*
- * メイン画面
+ * メイン画面.
  * 訪問リストの一覧をリスト表示する
  *
  * o-ta
- * 
+ *
  */
 
 package com.tumiki0ituki.visitcare;
@@ -250,7 +250,7 @@ public class MainActivity extends Activity implements OnClickListener, OnItemCli
 				intent.putExtra("STAFF_ID", Integer.parseInt(mStaffId));
 				startService(intent);
 			} else {
-				Log.d(TAG, "マジありえねぇわろすｗｗｗｗｗｗｗｗ");
+				Log.d(TAG, "");
 			}
 		}
 
@@ -280,7 +280,7 @@ public class MainActivity extends Activity implements OnClickListener, OnItemCli
 		mLifeline = false;
 		super.onDestroy();
 	}
-	
+
 	@Override
 	protected void onPause() {
 		Log.d(TAG, "onPause");
@@ -295,6 +295,7 @@ public class MainActivity extends Activity implements OnClickListener, OnItemCli
 		}
 		super.onPause();
 	}
+
 	// 上部のボタンが押されたときの処理
 	@Override
 	public void onClick(View v) {
@@ -639,7 +640,7 @@ public class MainActivity extends Activity implements OnClickListener, OnItemCli
 			if (request == GET_STAFF_NAME) {
 				if (mDia2 == null) {
 					Log.d(TAG, "mDia2 is null");
-					mDia2 = new ProgressDialog(this);					
+					mDia2 = new ProgressDialog(this);
 				}else if (mDia2.isShowing()) {
 					return;
 				}
@@ -651,7 +652,7 @@ public class MainActivity extends Activity implements OnClickListener, OnItemCli
 			if (request == GET_SCHEDULE) {
 				if (mDia == null) {
 					Log.d(TAG, "mDia is null");
-					mDia = new ProgressDialog(this);					
+					mDia = new ProgressDialog(this);
 				}else if (mDia.isShowing()) {
 					return;
 				}

@@ -1,5 +1,5 @@
 /*
- * 日付変更画面
+ * 日付変更画面.
  * 表示する訪問リストの日付を変更
  *
  * o-ta
@@ -25,24 +25,24 @@ import android.widget.DatePicker.OnDateChangedListener;
 public class DaySelect extends Activity implements OnClickListener,OnDateChangedListener {
 	private static final String TAG = DaySelect.class.getName();
 	private static final String methodname = "メソッド名：";
-	
+
 	//デフォルトで表示する今日の日付を取得するためのカレンダークラス生成	
 	Calendar calendar = Calendar.getInstance();
-	
+
 	//年月日
 	int year = calendar.get(Calendar.YEAR);
 	int month = calendar.get(Calendar.MONTH)+1;
 	int day = calendar.get(Calendar.DAY_OF_MONTH);
-	
+
 	//ピッカー
 	DatePicker picker;
-	
+
 	//送信ボタン
 	Button select;
-	
+
 	//キャンセルボタン
 	Button back;
- 
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -53,14 +53,14 @@ public class DaySelect extends Activity implements OnClickListener,OnDateChanged
 		back = (Button)findViewById(R.id.back_button);
 		select.setOnClickListener(this);
 		back.setOnClickListener(this);
-		
+
 		//ピッカーのデフォルトに今日の日付をセット、レイアウトを年/月/日にセット
 		picker=(DatePicker)findViewById(R.id.datePicker1);
 		picker.init(year, month-1, day, this);
 		picker.layout(year, month, day, 0);
-				
+
 	}
-	
+
 	//ピッカーの値が変更されたときに呼ばれる
 	@Override
 	public void onDateChanged(DatePicker view, int selectyear, int selectmonth,
@@ -95,7 +95,7 @@ public class DaySelect extends Activity implements OnClickListener,OnDateChanged
 		default:
 		}
 	}
-	
+
 	//物理キーのバックボタンが押された時に呼ばれる（バックボタンで戻ったとき落ちるのを防ぐ）
 	@Override
 	public boolean dispatchKeyEvent(KeyEvent event) {

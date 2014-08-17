@@ -1,5 +1,5 @@
 /*
- * 写真撮影画面
+ * 写真撮影画面.
  * 写真撮影に入る前の確認画面
  *
  * o-ta
@@ -40,7 +40,7 @@ public class Satsuei extends Activity implements OnClickListener{
 
 	//被介護者名を入れる変数
 	private String mUserName;
-	
+
 	//バックキー押下時用ダイアログ
 	Builder mDia;
 
@@ -108,14 +108,14 @@ public class Satsuei extends Activity implements OnClickListener{
 
 		if (event.getAction() == KeyEvent.ACTION_DOWN) {
 			if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
-				breakDialog();				
+				breakDialog();
 			}
 		}
 		return super.dispatchKeyEvent(event);
 	}
-	
+
 	public void breakDialog (){
-		Log.d(TAG, "breakDialog: " + "中断用のダイアログが出るよ");
+		Log.d(TAG, "breakDialog: " + "中断用のダイアログが出る");
 		mDia = new AlertDialog.Builder(Satsuei.this);
 		mDia.setTitle("撮影を中断しますか？");
 		mDia.setMessage("中断すると、写真を登録せずにメイン画面に戻ります。");
@@ -124,7 +124,7 @@ public class Satsuei extends Activity implements OnClickListener{
 			@Override
 			public void onClick(DialogInterface dialog,
 					int which) {
-				Log.d(TAG, "breakDialog: " + "中断用ボタンが押されたよ");
+				Log.d(TAG, "breakDialog: " + "中断用ボタンが押された");
 				finish();
 			}
 		});
@@ -133,12 +133,12 @@ public class Satsuei extends Activity implements OnClickListener{
 			@Override
 			public void onClick(DialogInterface dialog,
 					int which) {
-				Log.d(TAG, "breakDialog: " + "続行ボタンが押されたよ");
+				Log.d(TAG, "breakDialog: " + "続行ボタンが押された");
 				return;
 			}
 		});
 		mDia.create();
 		mDia.show();
 	}
-	
+
 }

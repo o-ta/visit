@@ -69,15 +69,15 @@ public class SendLocationServise extends Service implements LocationListener {
 
 	/** ノティフィケーション */
 	private Notification mNotification;
-	
+
 	private static final String URI = "http://japadroid.appspot.com//api/v1/regist/location.jsp";
-	
-	/** ﾃﾞﾌｫﾙﾄ値：更新時間 */
+
+	/** デフォルト値：更新時間 */
 	public static final String DEFAULT_TIME = "30";
-	
-	/** ｷｰ：更新時間 */
+
+	/** キー：更新時間 */
 	public static final String KEY_RELORDTIME = "relordtime";
-	
+
 	/** タイムアウト値. */
 	private static final int TIMEOUT = 10000;
 
@@ -102,10 +102,10 @@ public class SendLocationServise extends Service implements LocationListener {
 		super.onStart(intent, startId);
 
 		String intentAction = intent.getAction(); // 現在の状態を取得
-		
+
 		mStaffId = intent.getIntExtra("STAFF_ID", mStaffId); //スタッフＩＤをインテントから取得
 		Log.d(TAG, "STAFF_ID: " + mStaffId);
-		
+
 		// プリファレンスから更新間隔を取得
 		mRelordtime = getReloadtime(this);
 		Log.d(TAG, "更新間隔--->" + mRelordtime);
@@ -114,12 +114,10 @@ public class SendLocationServise extends Service implements LocationListener {
 		AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
 		intent.setAction("interval");
-		
+
 		 // 自分自身を呼び出す
-		PendingIntent pi = PendingIntent.getService(this, 0, new Intent(
-				"interval", null, this, SendLocationServise.class), 0);
-		
-		
+		PendingIntent pi = PendingIntent.getService(this, 0, new Intent("interval", null, this, SendLocationServise.class), 0);
+
 		// ノーティフィケーションマネージャの実装
 		mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
@@ -135,7 +133,7 @@ public class SendLocationServise extends Service implements LocationListener {
 			// 更新間隔（分）をミリ秒に変換
 			 int minTime = (mRelordtime * 60 * 1000); 
 			 Log.d(TAG, "更新間隔（ミリ秒）：" + minTime);
-			 
+
 			 boolean gps_para = mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 			 Log.d(TAG,"プロバイダーの状態--->"+Boolean.toString(gps_para));
 
@@ -146,6 +144,7 @@ public class SendLocationServise extends Service implements LocationListener {
 						Toast.LENGTH_LONG).show();
 				return;
 			}
+
 			// onLocationChangedを呼び出す
 			mLocationManager.requestLocationUpdates(
 					LocationManager.GPS_PROVIDER, 0, 0, this);
@@ -278,12 +277,12 @@ public class SendLocationServise extends Service implements LocationListener {
 
 		return res;
 	}
-	
+
 	/**
 	 * 更新時間を取得します｡
-	 * 
+	 *
 	 * @param context
-	 *            ｱﾌﾟﾘｹｰｼｮﾝ情報
+	 *            アプリケーション情報
 	 * @return 設定されている送信間隔（未設定の場合は{@link #DEFAULT_TIME}）
 	 */
 	public static int getReloadtime(Context context) {

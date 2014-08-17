@@ -1,5 +1,5 @@
 /*
- * 裏方
+ * 裏方.
  * 各入力情報のgetter,setterクラス
  *
  * o-ta
@@ -10,8 +10,9 @@ package com.tumiki0ituki.visitcare;
 
 import java.io.Serializable;
 import java.util.Date;
+
 /**
- * 各入力情報のgetter,setterクラス
+ * 各入力情報のgetter,setterクラス.
  * このクラスごとIntentで渡します。
  */
 @SuppressWarnings("serial")
@@ -21,12 +22,11 @@ public class Report implements Serializable{
 	private Date mStartDate;
 	private Date mEndDate;
 	private String mAim;
-	
-	
+
 	private String mNote;
-	
+
 	private int mWorkId;
-	
+
 	private String mWorkDay;
 	private String mCareName;
 
@@ -37,16 +37,13 @@ public class Report implements Serializable{
 	final int IDX_SHOPPING = 3;
 	final int IDX_COOK = 4;
 	final int IDX_WEAR = 5;
-	
-	
+
 	final int IDX_WALK = 0;
 	final int IDX_MOVE = 1;
 	final int IDX_TALK = 2;
 	final int IDX_EAT = 3;
 	final int IDX_SLEEP = 4;
-	
 
-	
 	public int getmWorkId() {
 		return mWorkId;
 	}
@@ -54,7 +51,7 @@ public class Report implements Serializable{
 	public void setmWorkId(int mWorkId) {
 		this.mWorkId = mWorkId;
 	}
-	
+
 	public String getmWorkDay() {
 		return mWorkDay;
 	}
@@ -82,11 +79,10 @@ public class Report implements Serializable{
 	public void setmServices(boolean val, int idx) {
 		mServices[idx] = val;
 	}
-	
-	
+
 	//状態チェックのところを配列で
 	int mStateCheck[] = {-1, -1, -1, -1, -1};
-	
+
 	public int getmStateCheck(int idx) {
 		return mStateCheck[idx];
 	}
@@ -95,7 +91,6 @@ public class Report implements Serializable{
 		mStateCheck[idx] = select;
 	}
 
-	
 	//必須項目
 	public Date getmDate() {
 		return mDate;
@@ -128,7 +123,6 @@ public class Report implements Serializable{
 	public void setmAim(String mAim) {
 		this.mAim = mAim;
 	}
-	
 
 	//備考欄表示
 	public String getmNote() {
@@ -138,9 +132,7 @@ public class Report implements Serializable{
 	public void setmNote(String mNote) {
 		this.mNote = mNote;
 	}
-	
-	
-	
+
 	/**
 	 * 時間指定の誤りを判定するメソッド
 	 * 開始時間　＞　終了時間の場合true
@@ -173,8 +165,8 @@ public class Report implements Serializable{
 		}
 		if (mAim == null){
 			return true;
-		}		
+		}
 		return false;
 	}
-	
+
 }

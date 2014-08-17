@@ -1,5 +1,5 @@
 /*
- * 新規スケジュール追加画面
+ * 新規スケジュール追加画面.
 
  * 新規スケジュールをデータベースへ追加するダイアログ
  *
@@ -111,7 +111,7 @@ public class AddSchedleDialog extends AlertDialog {
 
 	/**
 	 * スケジュールダイアログコンストラクタ.
-	 * 
+	 *
 	 * @param context 呼び出し元コンストラクタ
 	 */
 	public AddSchedleDialog(Context cnt) {
@@ -192,14 +192,14 @@ public class AddSchedleDialog extends AlertDialog {
 				dismiss();
 			}
 		});
-		
+
 		getUserListThread = new Thread(new Runnable() {
 			Handler hnd = new Handler();
-			
+
 			@Override
 			public void run() {
 				boolean ret;
-				
+
 				/* 訪問先一覧取得 - 通信 */
 				ret = getUserList();
 				Log.d(TAG, "Back from getUserList" + "flg" + Boolean.toString(testflg));
@@ -272,7 +272,7 @@ public class AddSchedleDialog extends AlertDialog {
 
 	/**
 	 * ユーザーリスト取得処理.
-	 * 
+	 *
 	 * @return ret 通信結果　True:成功　False:失敗
 	 */
 	private boolean getUserList() {
@@ -286,7 +286,7 @@ public class AddSchedleDialog extends AlertDialog {
 			makeAdapterItems(objResponse);
 			ret = true;
 		} else {
-			Log.d(TAG, "=====httpRes is NG=====");
+			Log.d(TAG, "===== httpRes is NG =====");
 		}
 		Log.d(TAG, "getUserList END");
 		return ret;
@@ -294,7 +294,7 @@ public class AddSchedleDialog extends AlertDialog {
 
 	/**
 	 * 新規スケジュール送信.
-	 * 
+	 *
 	 */
 	private boolean postNewSchedle() {
 		Log.d(TAG, "postNewSchedle START");
@@ -317,7 +317,7 @@ public class AddSchedleDialog extends AlertDialog {
 
 	/**
 	 * HTTP通信接続処理-ユーザーリスト取得.
-	 * 
+	 *
 	 * @param purl 接続先URL
 	 * @return レスポンス
 	 * @throws IOException 入出力例外
@@ -359,7 +359,7 @@ public class AddSchedleDialog extends AlertDialog {
 
 	/**
 	 * HTTP通信接続処理-新規スケジュール送信.
-	 * 
+	 *
 	 * @param purl 接続先URL
 	 * @return レスポンス
 	 * @throws IOException 入出力例外
@@ -371,15 +371,14 @@ public class AddSchedleDialog extends AlertDialog {
 
 		// パラメータの生成
 		HttpParams para = httppost.getParams();
-		
+
 		para.setIntParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, TIMEOUT);
 		para.setIntParameter(CoreConnectionPNames.SO_TIMEOUT, TIMEOUT);
 		para.setLongParameter(ConnManagerPNames.TIMEOUT, TIMEOUT);
 
-
 		/* 追加Post処理 */
 		Log.d(TAG, "URL:" + purl);
-		
+
 		List<NameValuePair> nvp = new ArrayList<NameValuePair>();
 		nvp.add(new BasicNameValuePair("staff_id", mStaffID));
 		nvp.add(new BasicNameValuePair("type", REQUEST_TYPE));
@@ -395,7 +394,7 @@ public class AddSchedleDialog extends AlertDialog {
 
 	/**
 	 * スピナーアイテム追加処理.
-	 * 
+	 *
 	 * @param httpRes 通信レスポンス-　JSONString
 	 */
 	private void makeAdapterItems(HttpResponse httpRes) {
@@ -432,7 +431,7 @@ public class AddSchedleDialog extends AlertDialog {
 
 	/**
 	 * 日付取得処理.
-	 * 
+	 *
 	 */
 	private void getDate() {
 		Log.d(TAG, "getDate-START");
@@ -449,7 +448,7 @@ public class AddSchedleDialog extends AlertDialog {
 
 	/**
 	 * ストリーム⇒String　変換処理.
-	 * 
+	 *
 	 * @param is インプットストリーム
 	 * @return string　変換後String
 	 * @throws IOException 入出力例外
@@ -478,7 +477,7 @@ public class AddSchedleDialog extends AlertDialog {
 
 	/**
 	 * スタッフＩＤ登録.
-	 * 
+	 *
 	 * @return スタッフID
 	 */
 	public String getmStaffID() {
@@ -488,7 +487,7 @@ public class AddSchedleDialog extends AlertDialog {
 
 	/**
 	 * スタッフＩＤ登録.
-	 * 
+	 *
 	 * @param pStuffID スタッフＩＤ
 	 */
 	public void setmStuffID(String pStuffID) {
@@ -505,4 +504,5 @@ public class AddSchedleDialog extends AlertDialog {
 		Log.d(TAG, "onStop");
 		super.onStop();
 	}
+
 }

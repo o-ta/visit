@@ -10,11 +10,11 @@ package com.tumiki0ituki.visitcare;
 
 public class User {
 	/**被介護者番号のメンバ変数*/
-	private String user_id; 
-	
+	private String user_id;
+
 	/**被介護者名のメンバ変数*/
-	private String user_name; 
-	
+	private String user_name;
+
 	//コンストラクタ省略
 
 	/**被介護者番号のゲッター*/
@@ -36,4 +36,5 @@ public class User {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
+	
 }

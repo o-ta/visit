@@ -1,9 +1,9 @@
 /*
- * 画像送信画面
+ * 画像送信画面.
  * 撮った写真を送るための画面
  *
  * o-ta
- * 
+ *
  */
 
 package com.tumiki0ituki.visitcare;
@@ -88,7 +88,7 @@ public class PictureSend extends Activity implements OnClickListener{
 	private String mDir;
 
 	//ファイル名を保持する変数
-	private String mFileName; 
+	private String mFileName;
 
 	//業務IDを保持する変数
 	private int mWorkId;
@@ -103,7 +103,7 @@ public class PictureSend extends Activity implements OnClickListener{
 	private Bitmap bm;
 
 	//HTTP通信でデータを取得する際のURLを格納する変数
-	private HttpGet mObjGet ;	
+	private HttpGet mObjGet ;
 
 	//http通信のレスポンスを受け取る変数
 	HttpResponse response;
@@ -112,7 +112,7 @@ public class PictureSend extends Activity implements OnClickListener{
 	private ProgressDialog mDia;
 
 	//通信エラーのダイアログを表示する際に使うハンドラ
-	private Handler mHandler;	
+	private Handler mHandler;
 
 	//通信時のレスポンス
 	HttpResponse res;
@@ -124,7 +124,7 @@ public class PictureSend extends Activity implements OnClickListener{
 		setContentView(R.layout.camera_send);
 
 		//通信エラーダイアログ用ハンドラを生成
-		mHandler = new Handler();	
+		mHandler = new Handler();
 
 		//撮影画面からファイル名、業務ID、被介護者名を受け取る
 		Intent intent = getIntent();
@@ -232,22 +232,22 @@ public class PictureSend extends Activity implements OnClickListener{
 				mDia.setTitle("画像送信中");
 				mDia.setMessage("しばらくお待ちください。。。");
 				mDia.setIndeterminate(false);
-				mDia.setButton(  
-						DialogInterface.BUTTON_NEGATIVE,  
-						"キャンセル",  
-						new DialogInterface.OnClickListener() {  
-							public void onClick(DialogInterface dialog, int which) {  
-								// mDia をキャンセル  
-								dialog.cancel();   
-							}  
-						});  
-				// mDia のキャンセルされた時に呼び出されるコールバックを登録  
-				mDia.setOnCancelListener(new DialogInterface.OnCancelListener() {  
-					public void onCancel(DialogInterface dialog) {  
-						// Thread を停止  
-						onStop();  
-					}  
-				});  
+				mDia.setButton(
+						DialogInterface.BUTTON_NEGATIVE,
+						"キャンセル",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int which) {
+								// mDia をキャンセル
+								dialog.cancel();
+							}
+						});
+				// mDia のキャンセルされた時に呼び出されるコールバックを登録
+				mDia.setOnCancelListener(new DialogInterface.OnCancelListener() {
+					public void onCancel(DialogInterface dialog) {
+						// Thread を停止
+						onStop();
+					}
+				});
 				mDia.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 				mDia.show();
 				}
@@ -267,7 +267,7 @@ public class PictureSend extends Activity implements OnClickListener{
 						handler.sendEmptyMessage(0);
 					}
 				});
-				thread.start();			
+				thread.start();
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -283,8 +283,8 @@ public class PictureSend extends Activity implements OnClickListener{
 	}
 
 	//アクティビティ終了時の処理
-	@Override 
-	public void finish() { 
+	@Override
+	public void finish() {
 		Log.d(TAG, methodname+"finish");
 		//画像を削除する
 		deleteFile();
@@ -293,8 +293,8 @@ public class PictureSend extends Activity implements OnClickListener{
 		Intent intent = new Intent();
 		setResult(RESULT_CANCELED,intent);
 
-		super.finish(); 
-	} 
+		super.finish();
+	}
 
 	public void deleteFile(){
 		//画像ファイルを削除
@@ -302,7 +302,7 @@ public class PictureSend extends Activity implements OnClickListener{
 		file.delete();
 
 		//イメージビューからビットマップをはがす
-		mIvImage.setImageBitmap(null); 
+		mIvImage.setImageBitmap(null);
 	}
 
 	//画像送信用URLへ画像を送信する処理
@@ -527,6 +527,4 @@ public class PictureSend extends Activity implements OnClickListener{
 	};
 
 }
-
-
 

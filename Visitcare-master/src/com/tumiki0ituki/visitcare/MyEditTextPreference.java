@@ -1,5 +1,5 @@
 /*
- * MyEditTextPreference
+ * MyEditTextPreference.
  * EditTextPreferenceのカスタマイズクラス
  *
  * o-ta
@@ -21,12 +21,12 @@ import android.widget.EditText;
 public class MyEditTextPreference extends EditTextPreference {
 	/** Sring:保存値*/
 	private String preferenceValue = "";
-	
-	/** エディットテキスト*/
+
+	/** エディットテキスト */
 	private EditText mEditText;
-	
+
 	/** タグ：クラス名 */
-	private static final String TAG = MyEditTextPreference.class.getName(); 
+	private static final String TAG = MyEditTextPreference.class.getName();
 
 	public MyEditTextPreference(Context context, AttributeSet attrs) {
 
@@ -61,47 +61,47 @@ public class MyEditTextPreference extends EditTextPreference {
 		}
 		Log.d(TAG, "onSetInitialValue  END");
 	}
-	
+
 	/**
-	 * ダイアログが展開される時に呼び出されます
+	 * ダイアログが展開される時に呼び出されます.
 	 */
 	@Override
 	protected View onCreateDialogView() {
 		Log.d(TAG, "onCreateDialogView  Start!");
-		
+
 		// 自前のレイアウトを読み込む
 		LayoutInflater inflater = (LayoutInflater) getContext()
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View view = inflater.inflate(R.layout.custom_edittext_preference, null);
 		mEditText = (EditText) view.findViewById(R.id.editText1);
-		
+
 		Log.d(TAG, "onCreateDialogView  END");
 		return view;
 	}
-	
+
 	/**
-	 * ダイアログが閉じる時に呼び出されます
+	 * ダイアログが閉じる時に呼び出されます.
 	 */
 	@Override
 	protected void onDialogClosed(boolean positiveResult) {
 		Log.d(TAG, "onDialogClosed  Start!");
-		
+
 		if (positiveResult) {
 			String edittime = mEditText.getText().toString(); // エディットテキストの文字を取得
 			int relordtime = Integer.parseInt(edittime);	// intに変換
-			
+
 			preferenceValue = edittime;
 			boolean ret = persistString(preferenceValue);// プリファレンスに保存する
 			Log.d(TAG, "保存結果--->" + Boolean.toString(ret));
-			
-		// 入力された更新間隔でサービスを再起動させる
+
+			// 入力された更新間隔でサービスを再起動させる
 			Intent intent = new Intent(getContext(),
 					SendLocationServise.class);
 			intent.setAction("start");
 			 intent.putExtra("更新間隔", relordtime);
 			getContext().startService(intent);
 		}
-		
+
 		super.onDialogClosed(positiveResult);
 		Log.d(TAG, "onDialogClosed  END");
 	}

@@ -1,5 +1,5 @@
 /*
- * 日報、３画面目（送信画面）
+ * 日報、３画面目（送信画面）.
  * 入力情報を一覧表示し、送信ボタンでサーバーへ送信
  *
  * o-ta
@@ -47,7 +47,7 @@ import android.widget.TextView;
 
 /**
  * 確認画面、サーバーに送信
- * 
+ *
  */
 public class ReportSendingActivity extends Activity {
 	private static final String URI = "http://japadroid.appspot.com/api/v1/regist/schedule.jsp";
@@ -234,7 +234,7 @@ public class ReportSendingActivity extends Activity {
 
 	/**
 	 * サーバーに送信する処理
-	 * 
+	 *
 	 */
 	public boolean sending() {
 		Log.d(TAG, "sending:" + "sending");

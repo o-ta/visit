@@ -1,9 +1,9 @@
 /*
- * カメラ撮影
+ * カメラ撮影.
  * カメラ撮影処理
  *
  * o-ta
- * 
+ *
  */
 
 package com.tumiki0ituki.visitcare;
@@ -38,7 +38,7 @@ public class Camera extends Activity {
 		//業務IDと被介護者名を受け取る
 		Intent intent = getIntent();
 		mWorkId = intent.getIntExtra("WORK_ID", 0);
-		mUserName= intent.getStringExtra("USER_NAME");	
+		mUserName= intent.getStringExtra("USER_NAME");
 
 		//フォルダを作るメソッドを呼び出し
 		mkdir(mDir);
@@ -70,10 +70,10 @@ public class Camera extends Activity {
 		android.hardware.Camera camera = CameraView.getmCamera();
 
 		if(camera!=null){
-			
+
 			//コールバックを指定
 			camera.setPreviewCallback(null);
-			
+
 			//カメラのプレビューを停止
 			camera.stopPreview();
 

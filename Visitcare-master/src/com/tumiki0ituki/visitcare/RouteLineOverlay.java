@@ -1,5 +1,5 @@
 /*
- * ラインオーバーレイ
+ * ラインオーバーレイ.
  * MapViewにラインを表示するオーバーレイクラス
  *
  * o-ta
@@ -34,7 +34,7 @@ public class RouteLineOverlay extends Overlay {
 
 	/**
 	 * コンストラクタ.
-	 * 
+	 *
 	 * @param pScheduleList 描画対象の訪問先リスト
 	 */
 	public RouteLineOverlay(List<Schedule> pScheduleList) {
@@ -54,10 +54,10 @@ public class RouteLineOverlay extends Overlay {
 		if (!shadow) {
 			/*
 			 * Paint設定
-			 * .setAntialias	アンチエリアス 
+			 * .setAntialias	アンチエリアス
 			 * .setStrokeWidth	太さ 			7px
-			 * .setStrokeCap	線の角 		ROUND=丸 
-			 * .setStrokeJoin	線のつなぎ目 	ROUND=丸 
+			 * .setStrokeCap	線の角 		ROUND=丸
+			 * .setStrokeJoin	線のつなぎ目 	ROUND=丸
 			 * .setColor		線の色
 			 */
 			Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -100,4 +100,5 @@ public class RouteLineOverlay extends Overlay {
 		}
 		Log.d(TAG, "draw END");
 	}
+
 }

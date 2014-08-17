@@ -56,7 +56,7 @@ public class SendLocationDialog extends DialogPreference {
 
 	/**
 	 * EditTextに入力された文字をプリファレンスに保存します
-	 * 
+	 *
 	 * @param text
 	 *            保存するためのテキスト
 	 */
@@ -94,7 +94,7 @@ public class SendLocationDialog extends DialogPreference {
 
 	/**
 	 * プリファレンスからデータを取り出すときに呼び出されます
-	 * 
+	 *
 	 * @return The current preference value.
 	 */
 	public String getText() {
@@ -106,7 +106,7 @@ public class SendLocationDialog extends DialogPreference {
 
 	/**
 	 * ダイアログが閉じられるときに呼び出されます
-	 * 
+	 *
 	 * @return The current preference value.
 	 */
 	@Override
@@ -179,7 +179,7 @@ public class SendLocationDialog extends DialogPreference {
 
 	/**
 	 * Returns the {@link EditText} widget that will be shown in the dialog.
-	 * 
+	 *
 	 * @return The {@link EditText} widget that will be shown in the dialog.
 	 */
 	public EditText getEditText() {
@@ -205,7 +205,7 @@ public class SendLocationDialog extends DialogPreference {
 
 		final SavedState myState = new SavedState(superState);
 		myState.text = getText();
-		
+
 		Log.d(TAG, "onSaveInstanceState　End");
 		return myState;
 	}
@@ -213,7 +213,7 @@ public class SendLocationDialog extends DialogPreference {
 	@Override
 	protected void onRestoreInstanceState(Parcelable state) {
 		Log.d(TAG, "onRestoreInstanceState　Start!");
-		
+
 		if (state == null || !state.getClass().equals(SavedState.class)) {
 			// Didn't save state for us in onSaveInstanceState
 			super.onRestoreInstanceState(state);
@@ -223,7 +223,7 @@ public class SendLocationDialog extends DialogPreference {
 		SavedState myState = (SavedState) state;
 		super.onRestoreInstanceState(myState.getSuperState());
 		setText(myState.text);
-		
+
 		Log.d(TAG, "onRestoreInstanceState　End");
 	}
 

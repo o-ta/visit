@@ -11,16 +11,16 @@ package com.tumiki0ituki.visitcare;
 public class Staff {
 	/** スタッフID */
 	private int staff_id;
-	
+
 	/** スタッフの氏名 */
 	private String staff_name;
-	
+
 	/** 緯度*/
 	private double latitude;
-	
+
 	/** 経度 */
 	private double longitude;
-	
+
 	/** 最終更新日 */
 	private String last_update_time;
 

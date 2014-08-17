@@ -1,9 +1,9 @@
 /*
- * カメラ撮影
+ * カメラ撮影.
  * カメラ撮影処理
  *
  * o-ta
- * 
+ *
  */
 
 package com.tumiki0ituki.visitcare;
@@ -23,56 +23,57 @@ public class CameraView extends SurfaceView
 implements SurfaceHolder.Callback, Camera.PictureCallback {
 	private static final String TAG = CameraView.class.getName();
 	private static final String methodname = "メソッド名：";
-	
+
 	//業務IDを入れる変数
 	private int mWorkId;
-	
+
 	//被介護者名を入れる変数
 	private String mUserName;
-	
+
 	//ホルダー
 	private SurfaceHolder mHolder;
-	
+
 	//カメラ
 	private static Camera mCamera;
-	
+
 	//コンテキスト
 	private Context mContext;
-	
+
 	//画像保存用の専用フォルダ（camera.javaで作成されたもの）
 	private String mDir;
-	
+
 	//撮影したときに自動でふられるファイル名を入れる変数
 	private String mFileName;
 
 	//コンストラクタ
 	public CameraView(Context context,int workId,String userName,String dir) {
-		
+
 		//スーパークラスのコンストラクタ実行
 		super(context);
-		
+
 		Log.d(TAG, methodname+"CameraView");
-		
+
 		//サーフェスホルダーの取得
 		mHolder = getHolder();
-		
+
 		//サーフェスホルダーの通知先を指定
 		mHolder.addCallback(this);
-		
+
 		//サーフェスホルダーの種別を指定
 		mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-		
+
 		//業務IDをセット
 		this.mWorkId=workId;
-		
+
 		//被介護者名をセット
 		this.mUserName=userName;
-		
+
 		//画像保存用フォルダをセット
 		this.mDir = dir;
-		
+
 		//コンテキストをセット
 		mContext = context;
+
 	}
 
 	//サーフェス生成時に実行される
@@ -80,7 +81,7 @@ implements SurfaceHolder.Callback, Camera.PictureCallback {
 		Log.d(TAG, methodname+"surfaceCreated");
 		//カメラオブジェクトの生成
 		setmCamera(Camera.open());
-		
+
 		//プレビューの表示先を指定
 		try {
 			getmCamera().setPreviewDisplay(holder);
@@ -103,13 +104,13 @@ implements SurfaceHolder.Callback, Camera.PictureCallback {
 		Log.d(TAG, methodname+"surfaceDestroyed");
 		//コールバックを指定
 		getmCamera().setPreviewCallback(null);
-		
+
 		//カメラのプレビューを停止
 		getmCamera().stopPreview();
-		
+
 		//カメラのリソースを開放
 		getmCamera().release();
-		
+
 		//カメラオブジェクトの開放
 		setmCamera(null);
 	}
@@ -119,9 +120,9 @@ implements SurfaceHolder.Callback, Camera.PictureCallback {
 	public boolean onTouchEvent(MotionEvent event) {
 		Log.d(TAG, methodname+"onTouchEvent");
 		if (event.getAction() == MotionEvent.ACTION_DOWN) {
-						
+
 			//写真を撮影
-			getmCamera().takePicture(null, null, this); 
+			getmCamera().takePicture(null, null, this);
 		}
 		return true;
 	}
@@ -131,24 +132,24 @@ implements SurfaceHolder.Callback, Camera.PictureCallback {
 		Log.d(TAG, methodname+"onPictureTaken");
 		//画像のファイル名を”業務ID.jpg”に指定
 		mFileName = mWorkId+".jpg";
-		
+
 		//ファイル書き出しのストリームを定義
 		FileOutputStream fos = null;
-		
+
 		try {
 			//ファイルの保存先を指定
 			fos = new FileOutputStream(mDir+mFileName);
-			
+
 			//ファイルを書き込み
 			fos.write(data);
-			
+
 			//ストリームを閉じる
 			fos.close();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		//ファイルを書き込んだ後、ファイル名と業務IDと被介護者名を確認画面に渡す
 		Intent intent = new Intent(mContext,PictureSend.class);
 		intent.putExtra("FILE_NAME", mFileName);

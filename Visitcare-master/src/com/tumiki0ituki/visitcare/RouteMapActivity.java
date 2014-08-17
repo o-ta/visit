@@ -1,5 +1,5 @@
 /*
- * 訪問ルートマップ
+ * 訪問ルートマップ.
  * 遷移元から指定された日の訪問ルートをMapViewへ表示するアクティビティー
  *
  * o-ta
@@ -70,14 +70,9 @@ public class RouteMapActivity extends MapActivity {
 	private Context mContext;
 
 	HttpResponse hres = null;
-	
+
 	/** バルーン付ピンオーバーレイ */
 	private CustomItemizedOverlay<CustomOverlayItem> mPinOverlay;
-
-
-	/* [デバッグ]URL */
-	// "http://192.168.1.101:8080/api/v1/request/schedule.php?staff_id=10&date_of=2012-01-18";
-	// "http://japadroid.appspot.com/api/v1/request/schedule.php?staff_id=10&date_of=2012-01-18";
 
 	/*
 	 * (非 Javadoc)
@@ -97,7 +92,7 @@ public class RouteMapActivity extends MapActivity {
 		final String date = intent.getStringExtra("DATE");
 
 		((TextView)findViewById(R.id.route_map_date)).setText(date + "の予定");
-		
+
 		Log.d("intent STAFF_IDの中身", Integer.toString(staff_id));
 		Log.d("intent DATEの中身", date.toString());
 
@@ -110,7 +105,7 @@ public class RouteMapActivity extends MapActivity {
 		map.setClickable(true);
 		/* ズームを有効化 */
 		map.setBuiltInZoomControls(false);
-		
+
 		findViewById(R.id.view_change).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -122,7 +117,7 @@ public class RouteMapActivity extends MapActivity {
 
 			}
 		});
-		
+
 		/* マップの詳細設定をするためのコントローラを取得 */
 		mapCtrl = map.getController();
 
@@ -135,7 +130,6 @@ public class RouteMapActivity extends MapActivity {
 		pDialog.setCancelable(true);
 		pDialog.show();
 
-		
 		new Thread(new Runnable() {
 			Handler hnd = new Handler();
 			@Override
@@ -182,7 +176,7 @@ public class RouteMapActivity extends MapActivity {
 
 	/**
 	 * 訪問先リスト取得.
-	 * 
+	 *
 	 * @param staff_id_data APIリクエスト引数
 	 * @return レスポンス
 	 * @throws IOException 入出力例外.
@@ -194,9 +188,9 @@ public class RouteMapActivity extends MapActivity {
 		// パラメータの生成
 		HttpParams para = new BasicHttpParams();
 
-		// 接続のタイムアウトの設定（３０秒）
+		// 接続のタイムアウトの設定（30秒）
 		HttpConnectionParams.setConnectionTimeout(para, TIMEOUTPARAM);
-		// データ取得のタイムアウトの設定（３０秒）
+		// データ取得のタイムアウトの設定（30秒）
 		HttpConnectionParams.setSoTimeout(para, TIMEOUTPARAM);
 
 		// HTTP通信実行
@@ -204,8 +198,6 @@ public class RouteMapActivity extends MapActivity {
 
 		// 本番用
 		HttpGet httpGet = new HttpGet(getString(R.string.reqscheduleurl) + "?" + staff_id_data);
-		// HttpGet httpGet = new
-		// HttpGet("http://192.168.1.101:8080/api/v1/request/schedule.php?staff_id=10&date_of=2012-01-19");
 
 		res = objCli.execute(httpGet);
 		if (res.getStatusLine().getStatusCode() != HttpURLConnection.HTTP_OK) {
@@ -220,8 +212,8 @@ public class RouteMapActivity extends MapActivity {
 
 	/**
 	 * オーバーレイ描画.
-	 * 
-	 * @param httpRes WebAPIレスポンス
+	 *
+	 * @param  httpRes WebAPIレスポンス
 	 * @throws IOException 入出力例外.
 	 */
 	private void setVisitGeoPoint(HttpResponse httpRes) throws IOException {
@@ -280,16 +272,16 @@ public class RouteMapActivity extends MapActivity {
 								.getIdentifier("number_" + turn, "drawable", getPackageName()));
 				break;
 			}
-			
+
 			/* バルーンピンオーバーレイ生成 */
 			mPinOverlay = new CustomItemizedOverlay<CustomOverlayItem>(
 					pin, map,true);
-			
+
 			// マーカーにバルーンをセット
 			mPinOverlay.addOverlay(new CustomOverlayItem(loc, route.getuser_name(),  route.getaddress()));
-			
+
 			map.getOverlays().add(mPinOverlay);
-			
+
 			/* ピンオーバーレイ生成 */
 //			RoutePinItemizedOverlay pinOverlay = new RoutePinItemizedOverlay(pin);
 //			pinOverlay.addPoint(loc);
@@ -300,7 +292,7 @@ public class RouteMapActivity extends MapActivity {
 
 	/**
 	 * ストリーム->String変換処理.
-	 * 
+	 *
 	 * @param is InputStream
 	 * @return 変換後String
 	 * @throws IOException 入出力例外.
@@ -337,4 +329,5 @@ public class RouteMapActivity extends MapActivity {
 		/* ルート表示OFF */
 		return false;
 	}
+
 }

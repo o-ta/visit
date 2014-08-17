@@ -1,9 +1,9 @@
 /*
- * 日報メイン画面
+ * 日報メイン画面.
  * 日報の日時・区分・提供サービスを入力してもらう画面
  *
  * o-ta
- * 
+ *
  */
 
 package com.tumiki0ituki.visitcare;
@@ -34,13 +34,13 @@ import android.widget.TimePicker;
 
 /**
  * 日報の最初の画面
- * 
+ *
  */
 public class ReportActivity extends Activity implements OnClickListener {
 	/** Called when the activity is first created. */
 
 	/**
-	 * 各入力情報のgetter,setterクラス。このクラスごとIntentで渡す。
+	 * 各入力情報のgetter,setterクラス。このクラスごとIntentで渡す.
 	 */
 	private Report mReport;
 
@@ -49,7 +49,7 @@ public class ReportActivity extends Activity implements OnClickListener {
 	TextView mTextView;
 
 	/**
-	 * 提供サービスチェックボックスのID
+	 * 提供サービスチェックボックスのID.
 	 */
 	int mCbId[] = { R.id.bath_box, R.id.clean_box, R.id.wash_box, R.id.shopping_box, R.id.cook_box,
 			R.id.wear_box };
@@ -256,21 +256,21 @@ public class ReportActivity extends Activity implements OnClickListener {
 	 * 中断用ダイアログ
 	 */
 	public void breakDialog() {
-		Log.d(TAG, "breakDialog: " + "中断用のダイアログが出るよ");
+		Log.d(TAG, "breakDialog: " + "中断用のダイアログが出る");
 		mDialog = new AlertDialog.Builder(ReportActivity.this);
 		mDialog.setTitle("入力を中断しますか？");
 		mDialog.setMessage("保存されていない情報は消去されます。");
 		mDialog.setPositiveButton("中断", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				Log.d(TAG, "breakDialog: " + "中断用ボタンが押されたよ");
+				Log.d(TAG, "breakDialog: " + "中断用ボタンが押された");
 				finish();
 			}
 		});
 		mDialog.setNegativeButton("続行", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				Log.d(TAG, "breakDialog: " + "続行ボタンが押されたよ");
+				Log.d(TAG, "breakDialog: " + "続行ボタンが押された");
 				return;
 			}
 		});
