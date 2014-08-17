@@ -24,26 +24,26 @@ import com.google.appengine.api.rdbms.AppEngineDriver;
 /**
  * <pre>
  * 【実績訪問データ】 /js/schedule.jsp.
- * 
+ *
  * [rest] date 今日の日付 yyyy-mm-dd
- * 
- * [response] 
+ *
+ * [response]
  * work_id .
  * staff_name スタッフ名 スタッフ名  String .
  * user_name 被介護者名 被介護者の名前 String.
  * schedule_time 予定時間 訪問予定時間 h:m .
  * start_time 開始時間 実際の訪問時刻 h:m .
- * end_time 終了時間 終了時間 h:m 
- * aim 区分 接触時の区分 String 
- * walk 歩行 int 不良・通常・良 不良(2)・通常(1)・良(0)指定なし(-1) 
- * talk 会話 int 不良・通常・良 不良(2)・通常(1)・良(0) 指定なし(-1) 
- * move 移動 int 不良・通常・良 不良(2)・通常(1)・良(0) 指定なし(-1) 
- * sleep 睡眠 int 不良・通常・良 不良(2)・通常(1)・良(0) 指定なし(-1) 
- * eat 食事 int 不良・通常・良 不良(2)・通常(1)・良(0) 指定なし(-1) 
- * imagefix 写真  boolean　imagefix(0or1)で判別し表示 
+ * end_time 終了時間 終了時間 h:m
+ * aim 区分 接触時の区分 String
+ * walk 歩行 int 不良・通常・良 不良(2)・通常(1)・良(0)指定なし(-1)
+ * talk 会話 int 不良・通常・良 不良(2)・通常(1)・良(0) 指定なし(-1)
+ * move 移動 int 不良・通常・良 不良(2)・通常(1)・良(0) 指定なし(-1)
+ * sleep 睡眠 int 不良・通常・良 不良(2)・通常(1)・良(0) 指定なし(-1)
+ * eat 食事 int 不良・通常・良 不良(2)・通常(1)・良(0) 指定なし(-1)
+ * imagefix 写真  boolean　imagefix(0or1)で判別し表示
  * status 日報 boolean　imagefix(0or1)で判別し表示
  * url 画像 画像のURL String
- * 
+ *
  * @author o-ta
  * </pre>
  */
@@ -52,7 +52,7 @@ public class AdminScheduleAPI extends HttpServlet {
 
 	/**
 	 * work_idに紐付けられたreportを取得する.
-	 * 
+	 *
 	 * @param date
 	 *            業務ID.
 	 * @return 実行可能SQL
@@ -117,7 +117,7 @@ public class AdminScheduleAPI extends HttpServlet {
 		// work_idに値があるかどうか？
 		if (date_str == null) { // 値がない
 
-			error_message = error_message + "値がないよ！<br/>";
+			error_message = error_message + "値がない！<br/>";
 
 		} else { // 値がある
 
@@ -139,12 +139,12 @@ public class AdminScheduleAPI extends HttpServlet {
 			} catch (NumberFormatException e) {
 
 				// 値が数字じゃない
-				error_message = error_message + "値が数字じゃないよ！<br />";
+				error_message = error_message + "値が数字じゃない！<br />";
 
 			} catch (SQLException e) {
 
 				// SQLエラー
-				error_message = error_message + "SQLエラーだよ！<br />内容："
+				error_message = error_message + "SQLエラー！<br />内容："
 						+ e.toString() + "<br />";
 
 			} catch (ParseException e) {
@@ -162,7 +162,7 @@ public class AdminScheduleAPI extends HttpServlet {
 						c.close();
 					} catch (SQLException e) {
 						error_message = error_message
-								+ "データベースが正常に終了しなかったよ<br/>";
+								+ "データベースが正常に終了しなかった<br/>";
 					}
 				}
 				if (json != null) { // jsonが正常に生成されていれば出力
@@ -177,7 +177,7 @@ public class AdminScheduleAPI extends HttpServlet {
 	}
 
 	/**
-	 * 文字列の日付が正しいかどうか・.
+	 * 文字列の日付が正しいかどうか.
 	 * @param date_str 文字列の日付.
 	 * @param pattern　パターン.
 	 * @throws ParseException エラー
@@ -191,9 +191,9 @@ public class AdminScheduleAPI extends HttpServlet {
 	}
 
 	/**
-	 * ResultSet. to. JSON. ResultSetをJSON形式に変換します。
-	 * 
-	 * RequestAPI.javaで書いたやつを流用 クラスにしろよ！ヾ(・ε・。)
+	 * ResultSet. to. JSON. ResultSetをJSON形式に変換します.
+	 *
+	 * RequestAPI.javaの流用クラスに…
 	 * 
 	 * @param rs
 	 *            ResultSet

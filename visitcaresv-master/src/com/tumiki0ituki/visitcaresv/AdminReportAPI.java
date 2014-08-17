@@ -19,34 +19,35 @@ import org.json.JSONObject;
 import com.google.appengine.api.rdbms.AppEngineDriver;
 
 /**
- * 
- *【日報データ】
- * /js/report.jsp
  *
- *[rest]
- *work_id 業務番号		業務ID typeがreportの場合に必要
+ * 【日報データ】
+ *  /js/report.jsp
  *
- *[response](JSON)
- *staff_name スタッフ名	スタッフ名 String
- *user_name 被介護者名		被介護者の名前 String
- *start_time 開始時間		実際の訪問時刻 YYYY-MM-DD h:m
- *end_time 終了時間		実際の終了時刻 h:m 
- *aim 区分			接触時の区分 String
- *bath 入浴			boolean／チェックボックス
- *clean 掃除			boolean／チェックボックス
- *wash 洗濯			boolean／チェックボックス
- *shopping 買い物		boolean／チェックボックス
- *cook 一般料理			boolean／チェックボックス
- *wear 衣服整理			boolean／チェックボックス
- *walk 歩行			int 不良・通常・良  不良(2)・通常(1)・良(0) 指定なし(-1)
- *move 移動			int 不良・通常・良  不良(2)・通常(1)・良(0) 指定なし(-1)
- *talk 会話			int 不良・通常・良  不良(2)・通常(1)・良(0) 指定なし(-1)
- *eat 食事			int 不良・通常・良  不良(2)・通常(1)・良(0) 指定なし(-1)
- *sleep 睡眠			int 不良・通常・良  不良(2)・通常(1)・良(0) 指定なし(-1)
- *note 内容			備考欄 String
- *url 画像			画像のURL String 
+ * [rest]
+ * work_id 業務番号		業務ID typeがreportの場合に必要
+ *
+ * [response](JSON)
+ * staff_name スタッフ名	スタッフ名 String
+ * user_name 被介護者名	被介護者の名前 String
+ * start_time 開始時間	実際の訪問時刻 YYYY-MM-DD h:m
+ * end_time 終了時間		実際の終了時刻 h:m
+ * aim 区分				接触時の区分 String
+ * bath 入浴				boolean／チェックボックス
+ * clean 掃除				boolean／チェックボックス
+ * wash 洗濯				boolean／チェックボックス
+ * shopping 買い物		boolean／チェックボックス
+ * cook 一般料理			boolean／チェックボックス
+ * wear 衣服整理			boolean／チェックボックス
+ * walk 歩行				int 不良・通常・良  不良(2)・通常(1)・良(0) 指定なし(-1)
+ * move 移動				int 不良・通常・良  不良(2)・通常(1)・良(0) 指定なし(-1)
+ * talk 会話				int 不良・通常・良  不良(2)・通常(1)・良(0) 指定なし(-1)
+ * eat 食事				int 不良・通常・良  不良(2)・通常(1)・良(0) 指定なし(-1)
+ * sleep 睡眠				int 不良・通常・良  不良(2)・通常(1)・良(0) 指定なし(-1)
+ * note 内容				備考欄 String
+ * url 画像				画像のURL String
+ *
  * @author o-ta.
- * 
+ *
  */
 @SuppressWarnings("serial")
 public class AdminReportAPI extends HttpServlet {
@@ -78,7 +79,7 @@ public class AdminReportAPI extends HttpServlet {
 		// work_idに値があるかどうか？
 		if (work_id_str == null) { // 値がない
 
-			error_message = error_message + "値がないよ！<br/>";
+			error_message = error_message + "値がない！<br/>";
 
 		} else { // 値がある
 
@@ -100,21 +101,21 @@ public class AdminReportAPI extends HttpServlet {
 			} catch (NumberFormatException e) {
 
 				// 値が数字じゃない
-				error_message = error_message + "値が数字じゃないよ！<br/>";
+				error_message = error_message + "値が数字じゃない！<br/>";
 
 			} catch (SQLException e) {
 
 				// SQLエラー
-				error_message = error_message + "SQLエラーだよ！<br/>内容："
+				error_message = error_message + "SQLエラー！<br/>内容："
 						+ e.toString() + "<br/>";
 
 			} finally {
-				
+
 				if (c != null) { // データベース接続終了
 					try {
 						c.close();
 					} catch (SQLException e) {
-						error_message = error_message + "データベースが正常に終了しなかったよ<br/>";
+						error_message = error_message + "データベースが正常に終了しなかった<br/>";
 					}
 				}
 				if (json != null) { // jsonが正常に生成されていれば出力
@@ -130,6 +131,7 @@ public class AdminReportAPI extends HttpServlet {
 
 	/**
 	 * work_idに紐付けられたreportを取得する.
+	 *
 	 * @param work_id 業務ID.
 	 * @return
 	 */
@@ -161,10 +163,10 @@ public class AdminReportAPI extends HttpServlet {
 	}
 
 	/**
-	 * ResultSet. to. JSON. ResultSetをJSON形式に変換します。
-	 * 
-	 * RequestAPI.javaで書いたやつを流用 クラスにしろよ！ヾ(・ε・。)
-	 * 
+	 * ResultSet. to. JSON. ResultSetをJSON形式に変換します.
+	 *
+	 * RequestAPI.javaで書いたやつを流用 クラスに…
+	 *
 	 * @param rs
 	 *            ResultSet
 	 * @return JSONArray

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * /api/v1/request/schedule.jsp　が呼ばれたときにこのクラスが呼ばれます.
  * クラス内ではRequestAPIを呼びます。
+ *
  * @author o-ta.
  *
  */

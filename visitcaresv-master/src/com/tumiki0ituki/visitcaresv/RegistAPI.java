@@ -4,11 +4,11 @@ package com.tumiki0ituki.visitcaresv;
  * タイトル：メイン画面
  * 説明    ：スケジュールリストの一覧を表示する
  *
- * 作成者  ：パソナ太郎
+ * 作成者  ：xxx
  *
  * 変更履歴
  *        ：新規登録
- *        ：2003.11.01 Saturday
+ *        ：20xx.mm.dd Saturday
  *        ：レビュー後の修正を反映
  *
  */
@@ -28,8 +28,8 @@ import com.google.appengine.api.rdbms.AppEngineDriver;
 
 /**
  * /api/v1/regist/以下のAPI部分です。. コンストラクタに必要なデータを渡すだけで、json形式にしてレスポンスを返します。
- * 
- * @author user
+ *
+ * @author o-ta
  */
 public class RegistAPI {
 
@@ -38,7 +38,7 @@ public class RegistAPI {
 
 	/**
 	 * Instantiates a new regist api.
-	 * 
+	 *
 	 * @param type
 	 *            the type　/api/v1/regist/****.jsp　の部分です。
 	 * @param req

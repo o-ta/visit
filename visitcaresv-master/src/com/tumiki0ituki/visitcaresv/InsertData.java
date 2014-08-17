@@ -28,7 +28,7 @@ public class InsertData extends HttpServlet {
 
 	/** The c. */
 	private Connection mConnect = null;
-	
+
 	/** 最小と最大のユーザIDがデータベースから返らない場合にERR_UIDが変える.  */
 	private static final int ERR_UID = -1;
 
@@ -54,7 +54,7 @@ public class InsertData extends HttpServlet {
 
 			// 日付を取得
 			Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("JST"));
-			 
+
 			//user_idの最大値と最小値を取得
 			int min_uid = getMinUserId(mConnect);
 			int max_uid = getMaxUserId(mConnect);
@@ -72,7 +72,7 @@ public class InsertData extends HttpServlet {
 				String sql = "INSERT INTO work (staff_id, user_id,schedule_time) "
 								+ "value"
 								+ " ('" + staff_id + "','" + rnd_uid + "','" + timestamp + "')";
-				
+
 				int success = mConnect.createStatement().executeUpdate(sql);
 				if (success > 0) {
 					out.println(sql + "<br />");
@@ -100,12 +100,12 @@ public class InsertData extends HttpServlet {
 
 		String sql = "SELECT user_id FROM c_user ORDER BY user_id DESC LIMIT 1";
 		ResultSet result = c.createStatement().executeQuery(sql);
-		if (result.next()) { 
+		if (result.next()) {
 			return result.getInt("user_id");
 		}
 		return ERR_UID;
 	}
-	
+
 	/**
 	 * c_userテーブルのuser_id最小値を取得.
 	 *
@@ -117,7 +117,7 @@ public class InsertData extends HttpServlet {
 
 		String sql = "SELECT user_id FROM c_user ORDER BY user_id ASC LIMIT 1";
 		ResultSet result = c.createStatement().executeQuery(sql);
-		if (result.next()) { 
+		if (result.next()) {
 			return result.getInt("user_id");
 		}
 		return ERR_UID;

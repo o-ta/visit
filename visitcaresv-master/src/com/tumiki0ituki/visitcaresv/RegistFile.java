@@ -118,7 +118,7 @@ public class RegistFile extends HttpServlet {
 	}
 
 	/**
-	 * ファイル名から拡張子を取り除いた名前を返します。.
+	 * ファイル名から拡張子を取り除いた名前を返します.
 	 * 
 	 * @param fileName
 	 *            ファイル名
@@ -128,7 +128,7 @@ public class RegistFile extends HttpServlet {
 		if (fileName == null) {
 			return null;
 		}
-			
+
 		int point = fileName.lastIndexOf(".");
 		if (point != -1) { //.があるか
 			return fileName.substring(0, point);

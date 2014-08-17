@@ -21,9 +21,9 @@ import com.google.appengine.api.rdbms.AppEngineDriver;
 
 /**
  * /api/v1/request/以下の処理をすべてこちらで引き受けています。.
- * 
+ *
  * @author o-ta.
- * 
+ *
  */
 public class RequestAPI {
 
@@ -31,16 +31,16 @@ public class RequestAPI {
 	 * データベース接続のためのURI.
 	 */
 	private static final String DB_NAME = "jdbc:google:rdbms://GAEサーバーの名前/kaigo";
-	
+
 	/**
 	 * dateのフォーマット.
 	 */
 	private static final String DATE_PATTERN = "yyyy-MM-dd";
-	
+
 	/**
 	 * コンストラクタです。　欲しいリクエストのタイプを指定して、Httpのrequestとresponseを渡してください。.
-	 * json形式にして吐き出します。.
-	 * 
+	 * json形式にして吐き出します.
+	 *
 	 * @param type
 	 *            次のURLの*部分です.　/api/v1/****.jsp
 	 * @param req
@@ -112,7 +112,7 @@ public class RequestAPI {
 
 	/**
 	 * スケジュールのリクエストから適切なsql文を発行します。 リクエストが不正の場合はnullを返します。.
-	 * 
+	 *
 	 * @param req
 	 *            HttpServletRequest
 	 * @return String sql リクエストに対応したsql文を返す
@@ -150,9 +150,10 @@ public class RequestAPI {
 		throw new RequestException();
 
 	}
-	
+
 	/**
-	 * 文字列の日付が正しいかどうか・.
+	 * 文字列の日付が正しいかどうか.
+	 *
 	 * @param date_str 文字列の日付.
 	 * @param pattern　パターン.
 	 * @throws ParseException エラー
@@ -167,7 +168,7 @@ public class RequestAPI {
 
 	/**
 	 * 被介護者のリクエストから適切なsql文を発行します。 リクエストが不正の場合はnullを返します。.
-	 * 
+	 *
 	 * @param req
 	 *            HttpServletRequest
 	 * @return String sql リクエストに対応したsql文を返す
@@ -181,7 +182,7 @@ public class RequestAPI {
 
 	/**
 	 * スタッフのリクエストから適切なsql文を発行します。 リクエストが不正の場合はnullを返します。.
-	 * 
+	 *
 	 * @param req
 	 *            HttpServletRequest
 	 * @return String sql リクエストに対応したsql文を返す

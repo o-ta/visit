@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * /api/v1/request/staff.jsp　が呼ばれたときにこのクラスが呼ばれます.
  * クラス内ではRequestAPIを呼びます。
+ *
  * @author o-ta.
  *
  */

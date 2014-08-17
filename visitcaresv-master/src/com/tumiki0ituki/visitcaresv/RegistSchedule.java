@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 
- * @author user
- * 
+ *
+ * @author o-ta
+ *
  */
 @SuppressWarnings("serial")
 public class RegistSchedule extends HttpServlet {
